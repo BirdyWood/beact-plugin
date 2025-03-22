@@ -3,22 +3,32 @@
   "displayName": "Beact",
   "description": "Support Beact for VSCode",
   "version": "0.0.1",
+  "publisher": "BirdyWood",
   "author": {
-        "name": "BirdyWood"
-    },
-    "license": "MIT",
-    "homepage": "https://github.com/BirdyWood/beact-plugin",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/BirdyWood/beact-plugin"
-    },
-    "bugs": {
-        "url": "https://github.com/BirdyWood/beact-plugin/issues"
-    },
+    "name": "BirdyWood"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/BirdyWood/beact-plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BirdyWood/beact-plugin"
+  },
+  "bugs": {
+    "url": "https://github.com/BirdyWood/beact-plugin/issues"
+  },
   "engines": {
     "vscode": "^1.98.0"
   },
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#383b2b",
+    "theme": "dark"
+  },
+  "keywords": [
+    "beact"
+  ],
   "categories": [
+    "Programming Languages",
     "Other"
   ],
   "activationEvents": [
@@ -26,10 +36,12 @@
   ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "beact-plugin.enable",
-      "title": "Enable/Disable Beact"
-    }]
+    "commands": [
+      {
+        "command": "beact-plugin.enable",
+        "title": "Enable/Disable Beact"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
