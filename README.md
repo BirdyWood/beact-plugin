@@ -31,8 +31,3 @@ You can enable and disable Beact with
 ## Feedback
 
 If you have any feedback, please reach out to us at [support@birdywood.fr](mailto:\\support@birdywood.fr)
-
-
-## License
-
-[MIT](LICENSE.md)

@@ -58,17 +58,20 @@ function activate(context) {
 
 
 	vscode.workspace.onDidSaveTextDocument((document) => {
-		vscode.workspace.workspaceFolders.forEach(folder => {
+		/*vscode.workspace.workspaceFolders.forEach(folder => {
 			vscode.window.showInformationMessage(`Folder ${folder.uri.fsPath}`);
-		})
+		})*/
 		if (isEnableBuilding) {
 			//extension.runCommands(document);
 			isWorking = true
 			console.log('Document saved', document.fileName);
 			var filePath = path.dirname(document.fileName);
 			if (vscode.workspace.workspaceFolders.length != 0) {
-				filePath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+				if (isWithin(vscode.workspace.workspaceFolders[0].uri.fsPath, document.fileName)) {
+					filePath = vscode.workspace.workspaceFolders[0].uri.fsPath;
+				}
 			}
+
 			console.log('File name', filePath);
 			myStatusBarItem.text = `$(loading~spin) Building the project...`;
 			cp.exec(`beact build`, {
@@ -80,6 +83,7 @@ function activate(context) {
 					console.log('error: ' + err);
 				}
 				myStatusBarItem.text = `$(check) Project built successfully`;
+				vscode.window.showInformationMessage(`Build in ${filePath}`);
 				setTimeout(() => {
 					isWorking = false
 					updateStatusBarItem();
@@ -92,6 +96,10 @@ function activate(context) {
 	});
 
 	//context.subscriptions.push(disposable);
+}
+function isWithin(outer, inner) {
+    const rel = path.relative(outer, inner);
+    return !rel.startsWith('..\\') && rel !== '..' && rel !== '';
 }
 function updateStatusBarItem() {
 	if (!isWorking) {
