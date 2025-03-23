@@ -2,7 +2,7 @@
   "name": "beact-plugin",
   "displayName": "Beact",
   "description": "Support BML (Beact Markup Language) for VSCode",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "BirdyWood",
   "author": {
     "name": "BirdyWood"
