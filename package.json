@@ -1,7 +1,7 @@
 {
   "name": "beact-plugin",
   "displayName": "Beact",
-  "description": "Support Beact for VSCode",
+  "description": "Support BML (Beact Markup Language) for VSCode",
   "version": "0.0.1",
   "publisher": "BirdyWood",
   "author": {
@@ -41,7 +41,18 @@
         "command": "beact-plugin.enable",
         "title": "Enable/Disable Beact"
       }
-    ]
+    ],
+    "languages": [{
+      "id": "beact",
+      "aliases": ["Beact", "beact"],
+      "extensions": [".bml"],
+      "configuration": "./language/language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "beact",
+      "scopeName": "source.beact",
+      "path": "./language/syntaxes/beact.tmLanguage.json"
+    }]
   },
   "scripts": {
     "lint": "eslint .",

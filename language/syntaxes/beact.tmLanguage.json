@@ -1,0 +1,161 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Beact",
+	"patterns": [
+		{
+			"include": "#comment"
+		},
+		{
+			"include": "#tag"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#bml_function"
+		},
+		{
+			"include": "#bml_component"
+		},
+		{
+			"include": "#bml_variable"
+		}
+	],
+	"repository": {
+		"tag": {
+			"begin": "\\<",
+			"end": "\\/>",
+			"patterns": [			
+				{
+					"include": "#bml_function"
+				},
+				{
+					"include": "#bml_component"
+				},
+				{
+					"include": "#bml_variable"
+				},
+				{
+					"include": "#attribute"
+				},
+				{
+					"include": "#attribute_value"
+				},
+				{
+					"include": "#html_tag"
+				},
+				{
+					"include": "#callComponent"
+				}
+			]
+		},
+		"html_tag": {
+			"name": "keyword.htmltag.beact",
+			"match": "(a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound|big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|content|data|datalist|dd|decorator|del|details|dfn|dir|div|dl|dt|element|em|embed|fieldset|figcaption|figure|font|footer|form|frame|frameset|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark|marquee|menu|menuitem|meta|meter|nav|nobr|noframes|noscript|object|ol|optgroup|option|output|p|param|plaintext|pre|progress|q|rp|rt|ruby|s|samp|script|section|select|shadow|small|source|spacer|span|strike|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|tt|u|ul|var|video|wbr|xmp)(\\b|>)"
+		},
+		"bml_function": {
+			"patterns": [
+				{
+					"name": "entity.name.function.beact",
+					"match": "[$]\\w+"
+				}
+			]
+		},
+		"bml_component": {
+			"patterns": [
+				{
+					"name": "entity.name.type.class.beact",
+					"match": "[:]\\w+"
+				}
+			]
+		},
+		"bml_variable": {
+			"patterns": [
+				{
+					"name": "keyword.control.beact",
+					"match": "[#]\\w+"
+				}
+			]
+		},
+		"callComponent": {
+			"patterns": [
+				{
+					"name": "variable.other.enummember.beact",
+					"match": "\\w+"
+				}
+			]
+		},
+		"attribute": {
+			"name": "entity.other.attribute-name.html",
+			"match": "\\b(\\w+)(?==)"
+		},
+		"attribute_value": {
+			"name": "string.quoted.double.html",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.html",
+					"match": "\\\\."
+				},
+				{
+					"include": "#tag"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.beact",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.beact",
+					"match": "\\\\."
+				},
+				{
+					"include": "#tag"
+				}
+			]
+		},
+		"comment": {
+			"name": "comment.block.html",
+			"begin": "<!--",
+			"end": "-->",
+			"patterns": [
+				{
+					"match": "\\G-?>",
+					"name": "invalid.illegal.characters-not-allowed-here.html"
+				},
+				{
+					"match": "<!--(?!>)|<!-(?=-->)",
+					"name": "invalid.illegal.characters-not-allowed-here.html"
+				},
+				{
+					"match": "--!>",
+					"name": "invalid.illegal.characters-not-allowed-here.html"
+				}
+			]
+		},
+		"jstag": {
+			"begin": "<script",
+			"end": "</script>",
+			"name": "source.js.embedded.html",
+			"patterns": [
+				{
+					"include": "source.js"
+				}
+			]
+		},
+		"csstag": {
+			"begin": "<style>",
+			"end": "</style>",
+			"name": "source.css.embedded.html",
+			"patterns": [
+				{
+					"include": "source.css"
+				}
+			]
+		}
+	},
+	"scopeName": "source.beact"
+}

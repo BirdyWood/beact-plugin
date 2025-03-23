@@ -83,7 +83,7 @@ function activate(context) {
 					console.log('error: ' + err);
 				}
 				myStatusBarItem.text = `$(check) Project built successfully`;
-				vscode.window.showInformationMessage(`Build in ${filePath}`);
+				vscode.window.showInformationMessage(`Built in ${filePath}`);
 				setTimeout(() => {
 					isWorking = false
 					updateStatusBarItem();
