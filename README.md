@@ -1,4 +1,6 @@
-# beact-plugin README
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/BirdyWood.beact-plugin?include_prereleases&style=for-the-badge)
+
+# beact-plugin
 
 beact-plugin is the official vscode extension for Beact. 
 
